@@ -1,0 +1,13 @@
+{% extends "movie/layout.html" %}
+{% block content %}
+    <div class=" content-section logout-sec ">
+        
+            <h2>You have been logged out!</h2>
+            <div class="border-top PT-3">
+                <small class="border-bottom">
+                     
+                    <a class="ml-2" href="{% url 'login' %}">Login again</a>
+                </small>
+        </div>
+    </div>
+{% endblock content %}

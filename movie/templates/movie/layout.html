@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Movie Master</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="../../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" >
+
+  <!-- Custom styles for this template -->
+  <link href="../../static/css/shop-homepage.css" rel="stylesheet" >
+
+  <link href="../../static/main.css" rel="stylesheet" >
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <script src='../../static/scripts.js'></script>
+
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <!-- <link href="{% static 'movie/album.css' %}" rel="stylesheet"> -->
+
+</head>
+
+<body>
+ 
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <!-- <div class="container"> -->
+      <a class="navbar-brand mr-2" href="#">Movie Master</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="nav navbar-nav navbar-left">
+          <li class="nav-item active">
+            <a class="nav-link mr-2" href="">Home
+              <!-- <span class="sr-only">(current)</span> -->
+            </a>
+          </li>
+           
+          <li class="nav-item mr-2">
+            <!-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark"> -->
+              <form class="form-inline" method="POST" action=" ">
+                {% csrf_token %} 
+                <input class="form-control mr-sm-1" type="text"  name="search_input" placeholder="Search">
+                <button class="btn btn-secondary nav-link" type="submit">Search</button>
+              </form>
+            <!-- </nav> -->
+          </li> 
+          <li class="nav-item">
+            <a class="nav-link" href="">Top Rated Movies</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link pr-5" href="">Popular Movies</a>
+          </li>
+
+        </ul>
+        <div class="navbar-right ">
+          <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+            <li class="nav-item "><span class="nav-link"> Hello {{user}}</span></li>
+            <li class="nav-item"><a class="nav-link"  href=""><span class="glyphicon glyphicon-shopping-cart"></span> Wishlist</a></li>
+            <li class="nav-item"><a  class="nav-link" href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+              {% else %}
+              <li class="nav-item"><a class="nav-link" href="{% url 'register' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            
+            {% endif %}
+          </ul>
+        </div>
+      <!-- </div> -->
+    </div>
+  </nav>
+  <!-- Page Content -->
+  <div class="container">
+
+    {% block content %}
+    {% endblock %}
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-3 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Movie Master 2020</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="../../static/vendor/jquery/jquery.min.js"></script>
+  <script src="../../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

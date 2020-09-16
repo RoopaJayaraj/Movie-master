@@ -1,0 +1,25 @@
+{% extends "movie/layout.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div >
+        <div class="container content col-lg-6">
+            <form  method="post">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom  sign_up_txt">
+                        Create Account
+                    </legend>
+                    {{ form|crispy}}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-dark" type="submit">Sign Up</button>
+                </div>
+                <small class="text-muted">
+                    Already Have An Account?  
+                    <a class="ml-2" href="{% url 'login' %}">Sign In</a>
+                </small>
+            </form>
+            
+        </div>
+    </div>
+{% endblock content %}
